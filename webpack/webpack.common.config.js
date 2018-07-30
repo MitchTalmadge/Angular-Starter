@@ -131,9 +131,9 @@ const config = {
 
     output: {
         path: path.join(__dirname, outputPath),
-        filename: '[name].js',
-        chunkFilename: 'chunk-[name].js',
-        sourceMapFilename: '[name].map'
+        filename: './resources/js/[name]-[chunkhash].js',
+        chunkFilename: './resources/js/[name]-[chunkhash].js',
+        sourceMapFilename: './resources/js/[name]-[chunkhash].map'
     },
 
     node: {
