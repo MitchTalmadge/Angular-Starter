@@ -1,0 +1,47 @@
+<div #modalRoot
+	 class="modal fade"
+	 tabindex="-1"
+	 role="dialog"
+	 (keydown.enter)="!submitButtonDisabled && submitButtonLabel ? onSubmit.emit() : 0">
+	<div class="modal-dialog"
+		 [class.modal-lg]="size === 'lg'"
+		 [class.modal-sm]="size === 'sm'"
+		 role="document">
+		<div class="modal-content">
+			
+			<!-- Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">
+					{{title}}
+				</h4>
+			</div>
+			
+			<!-- Body -->
+			<div class="modal-body">
+				<ng-content select="modal-body"></ng-content>
+			</div>
+			
+			<!-- Footer -->
+			<div class="modal-footer">
+				<ng-content select="modal-footer"></ng-content>
+				<button *ngIf="submitButtonLabel"
+						type="button"
+						class="btn btn-primary"
+						(click)="onSubmit.emit()"
+						[disabled]="submitButtonDisabled">{{submitButtonLabel}}
+				</button>
+				<button *ngIf="cancelButtonLabel"
+						type="button"
+						class="btn btn-secondary"
+						(click)="cancel()">
+					{{cancelButtonLabel}}
+				</button>
+				<button *ngIf="dangerSubmitButtonLabel"
+						type="button"
+						class="btn btn-danger pull-left"
+						(click)="onDangerSubmit.emit()">{{dangerSubmitButtonLabel}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

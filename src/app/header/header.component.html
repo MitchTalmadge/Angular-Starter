@@ -1,0 +1,26 @@
+<div id="top-blue"></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['/secure']">
+            <img src="logo.svg">
+        </a>
+
+        <ng-container *ngIf="onSecurePage">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" [routerLink]="['/secure', 'dashboard']" [routerLinkActive]="'active'">
+                        <a class="nav-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item" (click)="onSignOut()">
+                        <a class="nav-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+    </div>
+</nav>

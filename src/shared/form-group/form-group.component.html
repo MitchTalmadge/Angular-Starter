@@ -1,0 +1,51 @@
+<!--
+  ~ Copyright (C) 2016 AptiTekk, LLC. (https://AptiTekk.com/) - All Rights Reserved
+  ~ Unauthorized copying of any part of AptiBook, via any medium, is strictly prohibited.
+  ~ Proprietary and confidential.
+  -->
+
+<div class="form-group"
+	 [class.has-error]="control ? (control.touched || control.dirty) && control.invalid && !readOnly : false">
+	
+	<!--Label (if enabled) -->
+	<label *ngIf="label"
+		   class="control-label"
+		   [attr.for]="uuid">{{label}}</label>
+	<div [class.input-group]="faIconName">
+		
+		<!-- Font Awesome Icon (if enabled) -->
+		<div class="input-group-addon"
+			 *ngIf="faIconName">
+			<i class="fa fa-{{faIconName}}"></i>
+		</div>
+		
+		<!-- Input Field -->
+		<!--suppress HtmlFormInputWithoutLabel -->
+		<input #inputField
+			   *ngIf="!control"
+			   [id]="uuid"
+			   [(ngModel)]="value"
+			   [type]="inputType ? inputType : 'text'"
+			   class="form-control"
+			   [autofocus]="autoFocus"
+			   [placeholder]="placeholder ? placeholder : ''"
+			   [readonly]="readOnly">
+		
+		<!--suppress HtmlFormInputWithoutLabel -->
+		<input #inputField
+			   *ngIf="control"
+			   [id]="uuid"
+			   [formControl]="control"
+			   [type]="inputType ? inputType : 'text'"
+			   class="form-control"
+			   [autofocus]="autoFocus"
+			   [placeholder]="placeholder ? placeholder : ''"
+			   [readonly]="readOnly">
+	</div>
+	
+	<!-- Error Message Alert (if enabled) -->
+	<alert *ngIf="errorMessages && control"
+		   [severity]="'danger'"
+		   [displayed]="(control.touched || control.dirty) && control.invalid"
+		   [message]="getErrorMessage()"></alert>
+</div>

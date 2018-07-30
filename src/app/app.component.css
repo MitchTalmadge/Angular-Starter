@@ -1,0 +1,4 @@
+.app-container {
+    /* 100vh - header - footer */
+    min-height: calc(100vh - 86px - 45px);
+}

@@ -1,0 +1,11 @@
+nav {
+    min-height: 80px;
+}
+
+.navbar-brand>img {
+    height: 60px;
+}
+
+.nav-item {
+    cursor: pointer;
+}
